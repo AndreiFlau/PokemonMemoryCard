@@ -14,6 +14,8 @@ function PokemonCards({
   setGameWon,
 }) {
   const clickSound = new Audio("src\\sounds\\clickb1.mp3");
+  const winningAudio = new Audio("src\\sounds\\winningSound.mp3");
+
   if (shouldShuffle) {
     reshufflePokemon();
     setShouldShuffle(false);
@@ -25,8 +27,9 @@ function PokemonCards({
       if (score > bestScore) {
         setBestScore(score);
       }
-      if (score === pokemonObject.length) {
+      if (score === pokemonObject.length - 1) {
         setGameWon(true);
+        winningAudio.play();
       }
       setScore(0);
       pokemonObject.map((poke) => {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PokemonCards from "./PokemonCards";
 import PokeData from "./fetchData";
 import Confetti from "react-confetti";
@@ -15,15 +15,27 @@ function App() {
   });
   const { pokemonObject, isLoading, reshufflePokemon } = PokeData();
 
+  function handleWindowSize() {
+    setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+  }
+
+  useEffect(() => {
+    window.onresize = handleWindowSize;
+    handleWindowSize();
+
+    return () => {
+      window.onresize = null;
+    };
+  }, [gameWon]);
+
   function handleWin() {
     setGameWon(false);
     setShouldShuffle(true);
-    //play winning sound
   }
 
   return (
     <>
-      {gameWon && <Confetti />}
+      {gameWon && <Confetti width={windowSize.width} height={windowSize.height} />}
       <div className="card">
         <header className="header">
           <h2>Pokémon Memory Game</h2>
