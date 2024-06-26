@@ -45,7 +45,11 @@ function PokeData() {
 
         const upperCasedName = upperCaseName(pokemonInfo2.name);
 
-        const pokeObj = { name: upperCasedName, img: pokemonInfo2.sprites.other["official-artwork"].front_default };
+        const pokeObj = {
+          clicked: false,
+          name: upperCasedName,
+          img: pokemonInfo2.sprites.other["official-artwork"].front_default,
+        };
         pokeArray.push(pokeObj);
       }
       const shuffledPokeArray = shuffleArray(pokeArray);
