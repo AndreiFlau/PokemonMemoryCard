@@ -5,7 +5,7 @@ import Confetti from "react-confetti";
 import "../styles/App.css";
 
 function App() {
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(11);
   const [bestScore, setBestScore] = useState(0);
   const [gameWon, setGameWon] = useState(false);
   const [shouldShuffle, setShouldShuffle] = useState(false);

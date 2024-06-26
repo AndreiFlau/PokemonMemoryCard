@@ -27,15 +27,19 @@ function PokemonCards({
       if (score > bestScore) {
         setBestScore(score);
       }
-      if (score === pokemonObject.length - 1) {
-        setGameWon(true);
-        winningAudio.play();
-      }
       setScore(0);
       pokemonObject.map((poke) => {
         poke.clicked = false;
       });
       reshufflePokemon();
+    } else if (score >= pokemonObject.length - 1) {
+      setBestScore(pokemonObject.length);
+      setGameWon(true);
+      winningAudio.play();
+      setScore(0);
+      pokemonObject.map((poke) => {
+        poke.clicked = false;
+      });
     } else {
       setScore((prevScore) => prevScore + 1);
       pokemon.clicked = true;
