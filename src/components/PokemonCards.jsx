@@ -13,8 +13,8 @@ function PokemonCards({
   setShouldShuffle,
   setGameWon,
 }) {
-  const clickSound = new Audio("src\\sounds\\clickb1.mp3");
-  const winningAudio = new Audio("src\\sounds\\winningSound.mp3");
+  const clickSound = new Audio("/sounds/clickb1.mp3");
+  const winningAudio = new Audio("/sounds/winningSound.mp3");
 
   if (shouldShuffle) {
     reshufflePokemon();
