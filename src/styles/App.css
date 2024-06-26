@@ -1,0 +1,15 @@
+.poke-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.poke-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px black solid;
+}
+
+.poke-card img {
+  width: 50%;
+}
