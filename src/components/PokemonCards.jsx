@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { useEffect } from "react";
 import "../styles/App.css";
 
 function PokemonCards({
@@ -16,10 +17,12 @@ function PokemonCards({
   const clickSound = new Audio("/sounds/clickb1.mp3");
   const winningAudio = new Audio("/sounds/winningSound.mp3");
 
-  if (shouldShuffle) {
-    reshufflePokemon();
-    setShouldShuffle(false);
-  }
+  useEffect(() => {
+    if (shouldShuffle) {
+      reshufflePokemon();
+      setShouldShuffle(false);
+    }
+  }, [shouldShuffle, setShouldShuffle, reshufflePokemon]);
 
   function handleClick(pokemon) {
     clickSound.play();
