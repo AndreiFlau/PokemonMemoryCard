@@ -1,14 +1,30 @@
 /* eslint-disable react/prop-types */
-import PokeData from "./fetchData";
 import "../styles/App.css";
 
-function PokemonCards({ score, setScore, bestScore, setBestScore }) {
-  const { pokemonObject, isLoading, reshufflePokemon } = PokeData();
+function PokemonCards({
+  pokemonObject,
+  isLoading,
+  reshufflePokemon,
+  score,
+  setScore,
+  bestScore,
+  setBestScore,
+  shouldShuffle,
+  setShouldShuffle,
+  setGameWon,
+}) {
+  if (shouldShuffle) {
+    reshufflePokemon();
+    setShouldShuffle(false);
+  }
 
   function handleClick(pokemon) {
     if (pokemon.clicked) {
       if (score > bestScore) {
         setBestScore(score);
+      }
+      if (score === pokemonObject.length) {
+        setGameWon(true);
       }
       setScore(0);
       pokemonObject.map((poke) => {
