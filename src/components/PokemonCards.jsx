@@ -13,12 +13,14 @@ function PokemonCards({
   setShouldShuffle,
   setGameWon,
 }) {
+  const clickSound = new Audio("src\\sounds\\clickb1.mp3");
   if (shouldShuffle) {
     reshufflePokemon();
     setShouldShuffle(false);
   }
 
   function handleClick(pokemon) {
+    clickSound.play();
     if (pokemon.clicked) {
       if (score > bestScore) {
         setBestScore(score);
@@ -50,8 +52,8 @@ function PokemonCards({
     <div className="poke-cards">
       {pokemonObject.map((pokemon) => {
         return (
-          <div key={pokemon.name} className={`poke-card ${pokemon.name}`}>
-            <img src={pokemon.img} alt={pokemon.name} onClick={() => handleClick(pokemon)} />
+          <div key={pokemon.name} className={`poke-card ${pokemon.name}`} onClick={() => handleClick(pokemon)}>
+            <img src={pokemon.img} alt={pokemon.name} draggable={false} />
             <h2>{pokemon.name}</h2>
           </div>
         );

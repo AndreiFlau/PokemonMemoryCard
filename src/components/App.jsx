@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PokemonCards from "./PokemonCards";
 import PokeData from "./fetchData";
+import Confetti from "react-confetti";
 import "../styles/App.css";
 
 function App() {
@@ -8,22 +9,30 @@ function App() {
   const [bestScore, setBestScore] = useState(0);
   const [gameWon, setGameWon] = useState(false);
   const [shouldShuffle, setShouldShuffle] = useState(false);
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  });
   const { pokemonObject, isLoading, reshufflePokemon } = PokeData();
 
   function handleWin() {
     setGameWon(false);
     setShouldShuffle(true);
+    //play winning sound
   }
 
   return (
     <>
+      {gameWon && <Confetti />}
       <div className="card">
-        <h2>Pokémon Memory Game</h2>
-        <div className="scoreboard">
-          <p>Score: {score}</p>
-          <p>Best Score: {bestScore}</p>
-        </div>
-        <p>Get points by clicking the Pokémons. You&apos;re only allowed to click once per Pokémon.</p>
+        <header className="header">
+          <h2>Pokémon Memory Game</h2>
+          <div className="scoreboard">
+            <p>Score: {score}</p>
+            <p>Best Score: {bestScore}</p>
+          </div>
+          <p>Get points by clicking the Pokémons. You&apos;re only allowed to click once per Pokémon.</p>
+        </header>
         <PokemonCards
           pokemonObject={pokemonObject}
           isLoading={isLoading}
