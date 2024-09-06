@@ -1,6 +1,6 @@
 # Pokémon Game
 
-Try to memorize the Pokémons and only click the ones you haven't clicked before!
+Try to memorize the Pokémons by only clicking the ones you haven't clicked before!
 
 ![gamescreenshot](pokemon.png)
 
